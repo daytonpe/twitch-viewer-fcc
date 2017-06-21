@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+
+<html>
+
+	<head>
+		<title>Twitch Monitor (PD)</title>
+
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+		<link href="https://fonts.googleapis.com/css?family=Play" rel="stylesheet">
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+		<script src="http://code.jquery.com/ui/1.9.2/jquery-ui.js"></script>
+		<link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+		<link rel="stylesheet" href="style.css" type="text/css" />
+	</head>
+
+	<body>
+
+		<script>
+
+			function showAll(){
+				$("#allBox").addClass("hidden");
+				$("#onlineBox").addClass("hidden");
+				$("#offlineBox").addClass("hidden");
+			}			
+
+			$(document).ready(function() {
+				showAll();
+
+				$.getJSON('https://api.twitch.tv/kraken/streams/freecodecamp?callback=?', function(data) {
+				  console.log(data);
+				});
+
+			});
+
+		</script>
+
+
+		<div id="main" class="container">	
+
+			<h1>Twitch Monitor</h1>
+
+			<div id="box">
+
+				<div id="tabs">
+					<button class="btn btnTab">All</button>
+					<button class="btn btnTab">Online</button>
+					<button class="btn btnTab">Offline</button>
+				</div>
+
+				<div id="allBox">
+					<div id="channel1">
+						<p>Player Channel</p>
+					</div>
+					<div id="channel2">
+						<p>Player Channel</p>
+					</div>
+					<div id="channel3">
+						<p>Player Channel</p>
+					</div>
+				</div>
+
+				<div id="onlineBox">
+					<div id="channel1">
+						<p>Player Channel</p>
+					</div>
+					<div id="channel2">
+						<p>Player Channel</p>
+					</div>
+					<div id="channel3">
+						<p>Player Channel</p>
+					</div>
+				</div>
+
+				<div id="offlineBox">
+					<div id="channel1">
+						<p>Player Channel</p>
+					</div>
+					<div id="channel2">
+						<p>Player Channel</p>
+					</div>
+					<div id="channel3">
+						<p>Player Channel</p>
+					</div>
+				</div>
+
+			</div>
+
+		</div>
+
+	</body>
+
+</html>
