@@ -17,18 +17,30 @@
 
 		<script>
 
-			function showAll(){
-				$("#allBox").addClass("hidden");
-				$("#onlineBox").addClass("hidden");
-				$("#offlineBox").addClass("hidden");
-			}			
+
 
 			$(document).ready(function() {
-				showAll();
 
-				$.getJSON('https://api.twitch.tv/kraken/streams/freecodecamp?callback=?', function(data) {
-				  console.log(data);
-				});
+			$('#btnAll').on('click', function() {
+				$("#allBox").removeClass("hidden");
+				$("#onlineBox").addClass("hidden");
+				$("#offlineBox").addClass("hidden");
+			});		
+
+			$('#btnOnline').on('click', function() {
+				$("#allBox").addClass("hidden");
+				$("#onlineBox").removeClass("hidden");
+				$("#offlineBox").addClass("hidden");
+			});		
+
+			$('#btnOffline').on('click', function() {
+				$("#allBox").addClass("hidden");
+				$("#onlineBox").addClass("hidden");
+				$("#offlineBox").removeClass("hidden");
+			});	
+				// $.getJSON('https://api.twitch.tv/kraken/streams/freecodecamp?callback=?', function(data) {
+				//   console.log(data);
+				// });
 
 			});
 
@@ -42,14 +54,14 @@
 			<div id="box">
 
 				<div id="tabs">
-					<button class="btn btnTab">All</button>
-					<button class="btn btnTab">Online</button>
-					<button class="btn btnTab">Offline</button>
+					<button id="btnAll" class="btn btnTab">All</button>
+					<button id="btnOnline" class="btn btnTab">Online</button>
+					<button id="btnOffline" class="btn btnTab">Offline</button>
 				</div>
 
-				<div id="allBox">
+				<div id="allBox" class="">
 					<div id="channel1">
-						<p>Player Channel</p>
+						<p>Player Channel ALL</p>
 					</div>
 					<div id="channel2">
 						<p>Player Channel</p>
@@ -59,9 +71,9 @@
 					</div>
 				</div>
 
-				<div id="onlineBox">
+				<div id="onlineBox" class="hidden">
 					<div id="channel1">
-						<p>Player Channel</p>
+						<p>Player Channel ONLINE</p>
 					</div>
 					<div id="channel2">
 						<p>Player Channel</p>
@@ -71,9 +83,9 @@
 					</div>
 				</div>
 
-				<div id="offlineBox">
+				<div id="offlineBox" class="hidden">
 					<div id="channel1">
-						<p>Player Channel</p>
+						<p>Player Channel OFFLINE</p>
 					</div>
 					<div id="channel2">
 						<p>Player Channel</p>
