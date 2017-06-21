@@ -16,3 +16,7 @@ body{
 .logo{
 	height: 50px;
 }
+
+.row{
+	margin-top: 5px;
+}

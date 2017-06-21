@@ -16,8 +16,21 @@
 	<body>
 
 		<script>
+		function addChannel(index){
 
-
+			$("#allBox").append(
+					"<div id=\"channel\""+index+">"+
+						"<div class=\"row\">"+
+							"<div id=\"channel"+index+"Pic\" class=\"col col-sm-2\">"+
+							"</div>"+
+							"<div id=\"channel"+index+"Name\" class=\"col col-sm-4\">"+
+							"</div>"+
+							"<div id=\"channel"+index+"Status\" class=\"col col-sm-6\">"+
+							"</div>"+
+						"</div>"+
+					"</div>"
+	      )
+			};
 
 			$(document).ready(function() {
 
@@ -25,7 +38,7 @@
 					$("#allBox").removeClass("hidden");
 					$("#onlineBox").addClass("hidden");
 					$("#offlineBox").addClass("hidden");
-				});		
+				});
 
 				$('#btnOnline').on('click', function() {
 					$("#allBox").addClass("hidden");
@@ -39,13 +52,16 @@
 					$("#offlineBox").removeClass("hidden");
 				});	
 
-				$.getJSON('https://wind-bow.gomix.me/twitch-api/streams/ESL_SC2?callback=?', function(data) {
-				  console.log(data);
-				  console.log(data.stream.channel.url);
 
-				  $("#channel1Pic").html("<img class="+"logo"+" src="+data.stream.channel.logo+">");
-				  $("#channel1Name").html("<a href="+data.stream.channel.url+">"+data.stream.channel.display_name+"</a>");
-				  $("#channel1Status").html("<p>"+data.stream.channel.status+"</p>");
+				$.getJSON('https://wind-bow.gomix.me/twitch-api/streams/ESL_SC2?callback=?', function(data) {
+				  // console.log(data);
+					
+					var i = 1;
+					addChannel(i);
+
+				  $("#channel"+i+"Pic").html("<img class="+"logo"+" src="+data.stream.channel.logo+">");
+				  $("#channel"+i+"Name").html("<a href="+data.stream.channel.url+">"+data.stream.channel.display_name+"</a>");
+				  $("#channel"+i+"Status").html("<p>"+data.stream.channel.status+"</p>");
 
 				});
 
@@ -58,8 +74,6 @@
 
 			<h1>Twitch Monitor</h1>
 
-			<p></p>
-
 			<div id="box">
 
 				<div id="tabs">
@@ -69,22 +83,6 @@
 				</div>
 
 				<div id="allBox" class="">
-					<div id="channel1">
-						<div class="row">
-							<div id="channel1Pic" class="col col-sm-2">
-							</div>
-							<div id="channel1Name" class="col col-sm-4">
-							</div>
-							<div id="channel1Status" class="col col-sm-6">
-							</div>
-						</div>
-					</div>
-					<div id="channel2">
-						<p>Player Channel</p>
-					</div>
-					<div id="channel3">
-						<p>Player Channel</p>
-					</div>
 				</div>
 
 				<div id="onlineBox" class="hidden">
