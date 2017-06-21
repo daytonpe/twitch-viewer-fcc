@@ -21,26 +21,31 @@
 
 			$(document).ready(function() {
 
-			$('#btnAll').on('click', function() {
-				$("#allBox").removeClass("hidden");
-				$("#onlineBox").addClass("hidden");
-				$("#offlineBox").addClass("hidden");
-			});		
+				$('#btnAll').on('click', function() {
+					$("#allBox").removeClass("hidden");
+					$("#onlineBox").addClass("hidden");
+					$("#offlineBox").addClass("hidden");
+				});		
 
-			$('#btnOnline').on('click', function() {
-				$("#allBox").addClass("hidden");
-				$("#onlineBox").removeClass("hidden");
-				$("#offlineBox").addClass("hidden");
-			});		
+				$('#btnOnline').on('click', function() {
+					$("#allBox").addClass("hidden");
+					$("#onlineBox").removeClass("hidden");
+					$("#offlineBox").addClass("hidden");
+				});		
 
-			$('#btnOffline').on('click', function() {
-				$("#allBox").addClass("hidden");
-				$("#onlineBox").addClass("hidden");
-				$("#offlineBox").removeClass("hidden");
-			});	
-				// $.getJSON('https://api.twitch.tv/kraken/streams/freecodecamp?callback=?', function(data) {
-				//   console.log(data);
-				// });
+				$('#btnOffline').on('click', function() {
+					$("#allBox").addClass("hidden");
+					$("#onlineBox").addClass("hidden");
+					$("#offlineBox").removeClass("hidden");
+				});	
+
+				$.getJSON('https://wind-bow.gomix.me/twitch-api/streams/ESL_SC2?callback=?', function(data) {
+				  console.log(data);
+				  console.log(data.stream.channel.url);
+
+				  $("#channel1Name").html("<a href="+data.stream.channel.url+">free code camp</a>")
+
+				});
 
 			});
 
@@ -50,6 +55,8 @@
 		<div id="main" class="container">	
 
 			<h1>Twitch Monitor</h1>
+
+			<a href=""></a>
 
 			<div id="box">
 
@@ -61,7 +68,17 @@
 
 				<div id="allBox" class="">
 					<div id="channel1">
-						<p>Player Channel ALL</p>
+						<div class="row">
+							<div id="channel1Pic" class="col col-sm-2">
+								<p>img</p>
+							</div>
+							<div id="channel1Name" class="col col-sm-4">
+								<p>Free Code Camp</p>
+							</div>
+							<div id="channel1Status" class="col col-sm-6">
+								<p>Offline</p>
+							</div>
+						</div>
 					</div>
 					<div id="channel2">
 						<p>Player Channel</p>
