@@ -20,3 +20,11 @@ body{
 .row{
 	margin-top: 5px;
 }
+
+.redBackground{
+	background-color: red;
+}
+
+.greenBackground{
+	background-color: green;
+}
