@@ -1,7 +1,11 @@
-p, a, h1, h2, h3, h4, h5, h6, input, button{
+p, a, h1, h2, h3, h4, h5, h6, button{
 	color: white;
 	text-decoration: none;
 	font-family: 'Play', sans-serif;
+}
+
+input{
+	color: black;
 }
 
 a:hover, a:visited{
