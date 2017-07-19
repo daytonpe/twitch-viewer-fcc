@@ -23,29 +23,32 @@
 
 			function addChannel(index){
 				$("#box").append(
-					"<div id=\"channel"+index+"\">"+
-						"<div class=\"row\">"+
-							"<div id=\"channel"+index+"Pic\" class=\"col col-sm-2\">"+
+
+						"<div id=\"channel"+index+"\" class=\"row\">"+
+							"<div id=\"channel"+index+"Pic\" class=\"col col-sm-2 vcenter\">"+
 							"</div>"+
-							"<div id=\"channel"+index+"Name\" class=\"col col-sm-4\">"+
+							"<div id=\"channel"+index+"Name\" class=\"col col-sm-3 vcenter\">"+
 							"<p>Name"+index+"</p>"+
 							"</div>"+
-							"<div id=\"channel"+index+"Status\" class=\"col col-sm-6\">"+
+							"<div id=\"channel"+index+"Status\" class=\"col col-sm-7 vcenter\">"+
 							"</div>"+
-						"</div>"+
-					"</div>"
+						"</div>"
 		    )
 			};
 
-			function clearChannels(){
+			function clearBox(){
 					$('#box').empty();
 			}
 
-			function search(term){
-				var channelSubset = channels;
+			function search(){
+				clearBox();
+				var channelSubset=[];
+				var searchQuery = $("#searchQuery").val();
 				for (var i = 0; i < channels.length; i++) { 
-					if(channels[i].slice[0,term.length] != term){
-						channels.splice[i,1];
+					if(searchQuery == channels[i].slice(0,searchQuery.length)){
+						channelSubset.push(channels[i]);
+						addChannel(i);
+						updateInfo(i);
 					}
 				}
 			}
@@ -84,6 +87,10 @@
 			}
 
 			function populateAll(){
+				clearBox();
+				online = [];
+				offline = [];
+				console.log("channels: "+channels);
 				for (var i = 0; i < channels.length; i++) { 
 					addChannel(i);
 					updateInfo(i);
@@ -91,73 +98,70 @@
 			}
 
 			function populateOnline(){
+				clearBox();
+				console.log("online: "+online);
 				for (var i = 0; i < online.length; i++) { 
 					addChannel(online[i]);
 					updateInfo(online[i]);
 				}
+				online = [];
 			}
 
 			function populateOffline(){
+				clearBox();
+				console.log("offline: "+offline);
 				for (var i = 0; i < offline.length; i++) { 
 					addChannel(offline[i]);
 					updateInfo(offline[i]);
 				}
+				offline = [];
 			}
+
 			$(document).ready(function() {
 
 				// BUTTON CONTROLS
 				$('#btnAll').on('click', function() {
-					clearChannels();
 					populateAll();
+					$("#searchBar").removeClass('hidden');
 				});
 
 				$('#btnOnline').on('click', function() {
-					clearChannels();
 					populateOnline();
+					$("#searchBar").addClass('hidden');
 				});		
 
 				$('#btnOffline').on('click', function() {
-					clearChannels();
 					populateOffline();
+					$("#searchBar").addClass('hidden');
 				});	
 
-				// INITIAL LIST POPULATION
-				// populateOnline();
-				// populateOffline();
-				populateAll();
+				// searchbox control
+				$('#searchQuery').on("keyup", function() {
+				  // console.log($("#searchQuery").val());
+				  search();
+				});
 
+				populateAll();
 
 			});
 
 		</script>
 
-
 		<div id="main" class="container">	
 
-			<h1>Twitch Monitor</h1>
+			<h1 id="title">Twitch Monitor</h1>
 
 			<div id="searchBar" class="">				
-				<input id="searchInput" type="text" id="searchQuery" placeholder="Search">
+				<input type="text" id="searchQuery" placeholder="Search">
 			</div>
-
 
 			<div id="tabs">
 				<button id="btnAll" class="btn btnTab">All</button>
 				<button id="btnOnline" class="btn btnTab">Online</button>
 				<button id="btnOffline" class="btn btnTab">Offline</button>
 			</div>
-
+			
 			<div id="box">
-
-				<div id="allBox" class="">
-				</div>
-
-				<div id="onlineBox" class="hidden">
-				</div>
-
-				<div id="offlineBox" class="hidden">
-				</div>
-
 			</div>
 
 		</div>

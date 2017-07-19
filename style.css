@@ -1,34 +1,81 @@
 p, a, h1, h2, h3, h4, h5, h6, button{
-	color: white;
+	color: #36175E;
 	text-decoration: none;
 	font-family: 'Play', sans-serif;
 }
 
+input, .btn{
+	color: #36175E;
+	background-color: white;
+	border: 1px solid #36175E;
+	border-radius: 7px;
+}
+
+input:hover, .btn:hover{
+	background-color: rgba(53 , 23 , 94 , .35);
+}
+
 input{
-	color: black;
+	padding: 6px;
+}
+
+input:focus{
+	outline: none;
 }
 
 a:hover, a:visited{
-	color:white;
+	color:#9768D1;
 	cursor: pointer;
 }
 
 body{
-	background-color: #7B52AB;
+	background-color: white;
 }
 
 .logo{
 	height: 50px;
+	margin: 10px;
 }
 
 .row{
-	margin-top: 5px;
+	border: 1px solid #36175E;
+	border-radius: 5px;
+	margin-top: 10px;
+	background-color: none;
+	margin-left: 0px;
+	margin-right: 0px;
+	vertical-align: middle;
+	border-radius: 10px;
+}
+
+.vcenter {
+    display: inline-block;
+    vertical-align: middle;
+    float: none;
 }
 
 .redBackground{
-	background-color: red;
+	border-radius: 5px;
+	background-color: rgba(255, 0, 0, .35)
 }
 
 .greenBackground{
-	background-color: green;
+	border-radius: 5px;
+	background-color: rgba(0, 255, 0, .35)
+}
+
+#title, #tabs, #searchBar{
+	text-align: center;
+}
+
+#searchBar, #tabs{
+	margin-top: 10px;
+	margin-bottom: 10px;
+}
+
+#box{
+	max-width: 50%;
+	margin-left: auto;
+	margin-right: auto;
+	margin-bottom: 100px;
 }
